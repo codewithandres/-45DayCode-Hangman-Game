@@ -166,6 +166,7 @@ body {
         flex-direction: column;
         padding: 30px 15px;
         align-items: center;
+        margin: 1em;
     }
 
     .hangman-box img {
