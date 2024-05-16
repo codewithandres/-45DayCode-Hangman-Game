@@ -119,6 +119,11 @@ body {
 .keyboard button {
     width: calc(100% / 9 - 5px);
     padding: .5em;
+
+    &[disabled] {
+        background-color: #05c46b;
+        pointer-events: none;
+    }
 }
 
 .games-modal {
