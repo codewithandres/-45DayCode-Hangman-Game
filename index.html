@@ -5,11 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hagman Game Javascript | Dize Design </title>
+    <!-- custom css -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- custom js -->
+    <script type="module" src="js/app.js" defer></script>
 </head>
 
 <body>
+    <div class="games-modal">
+        <div class="content">
+            <img src="img/lost.gif" alt="">
+            <h4>Game Over!</h4>
+            <p>The correct word was: <b>Raibow</b></p>
+            <button class="play-again">Play Again</button>
+        </div>
+    </div>
+
     <div class="container">
-        <div class="hangman">
+        <div class="hangman-box">
             <img src="img/hangman-0.svg" alt="hangman-img">
             <h1>Hangman Games</h1>
         </div>
@@ -18,7 +31,7 @@
                 <li class="letter"></li>
                 <li class="letter"></li>
                 <li class="letter"></li>
-                <li class="letter"></li>
+                <li class="letter guessed">a</li>
                 <li class="letter"></li>
                 <li class="letter"></li>
                 <li class="letter"></li>
