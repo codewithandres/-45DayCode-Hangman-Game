@@ -3,10 +3,13 @@ import { wordList } from "./game-word-list.js";
 const keywordDiv = document.querySelector('.keyboard'),
     wordDisplay = document.querySelector('.word-display'),
     guesesText = document.querySelector('.guesses-text b'),
-    hangmanimage = document.querySelector('.hangman-box img');
+    hangmanimage = document.querySelector('.hangman-box img'),
+    gameModal = document.querySelector('.games-modal');
+
 
 let currentWord,
     wrongGuessCount = 0,
+    correctLetter = [],
     maxGueses = 6;
 
 const getRandomWord = () => {
@@ -17,20 +20,34 @@ const getRandomWord = () => {
     wordDisplay.innerHTML = word.split('').map(() => `<li class="letter"></li>`).join('');
 };
 
+const gameOver = isVictory => {
+    setTimeout(() => {
+        const modalText = isVictory ? `You found the word` : `The correct word was`;
+        gameModal.querySelector('img').src = `img/${isVictory ? 'victory' : 'lost'}.gif`;
+        gameModal.querySelector('h4').textContent = `${isVictory ? 'Congrats' : 'Game Over'}`;
+        gameModal.querySelector('p').innerHTML = `${modalText} <b>${currentWord}</b>`;
+        gameModal.classList.add('show');
+    }, 300);
+};
+
 const initGame = (buttons, clickedLetter) => {
     if (currentWord.includes(clickedLetter)) {
         [...currentWord].map((letter, index) => {
             if (letter === clickedLetter) {
+                correctLetter.push(letter);
                 wordDisplay.querySelectorAll('li')[index].textContent = letter;
                 wordDisplay.querySelectorAll('li')[index].classList.add('guessed');
+                buttons.disabled = true;
             };
         });
     } else {
         wrongGuessCount++;
         hangmanimage.src = `img/hangman-${wrongGuessCount}.svg`;
     };
-    buttons.disabled = true;
     guesesText.textContent = `${wrongGuessCount} / ${maxGueses}`;
+
+    if (wrongGuessCount === maxGueses) return gameOver(false);
+    if (correctLetter.length === currentWord.length) return gameOver(true);
 };
 
 for (let i = 97; i <= 122; i++) {

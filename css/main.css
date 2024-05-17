@@ -133,10 +133,19 @@ body {
     top: 0;
     left: 0;
     background-color: hsla(221, 17%, 22%, 0.726);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999;
+    transition: opacity 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.games-modal.show {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .games-modal .content {
