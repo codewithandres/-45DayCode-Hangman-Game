@@ -1,3 +1,6 @@
+
+![image](https://github.com/dizedesign/-45DayCode-Hangman-Game/assets/141795901/4536b3a4-67b1-421b-b3b7-515dcc607b1c)
+
 # Juego de Ahorcado
 
 Este es un proyecto de juego de ahorcado clásico, donde el jugador intenta adivinar la palabra oculta letra por letra.
